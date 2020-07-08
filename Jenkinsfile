@@ -1,5 +1,11 @@
 pipeline {
-    agent { node {label 'labelName'} }
+    agent any
+    tools {
+        go 'go-1.11'
+    }
+    environment {
+        GO111MODULE = 'on'
+    }
     stages {
         stage('build') {
             steps {
