@@ -6,6 +6,7 @@ pipeline {
     environment {
         GO111MODULE = 'on'
     }
+    
     stages {
         stage('build') {
             steps {
