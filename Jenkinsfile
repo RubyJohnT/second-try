@@ -12,9 +12,7 @@ pipeline {
                 script {
                     sh 'git --no-pager diff origin/$CHANGE_TARGET --name-only'
                     def ret = sh(script: 'git --no-pager diff origin/$CHANGE_TARGET --name-only', returnStdout: true)
-                    for (gofile in ret) {
-                        sh 'golint ${gofile}'
-                    }
+                    echo "${file}"
                     
                     for (changeLogSet in currentBuild.changeSets) { 
                         for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
