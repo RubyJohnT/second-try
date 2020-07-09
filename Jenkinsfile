@@ -12,8 +12,7 @@ pipeline {
                 script {
                     
                     sh 'git --no-pager diff origin/$CHANGE_TARGET --name-only'
-                    def ret = sh(script: 'git --no-pager diff origin/$CHANGE_TARGET --name-only', returnStdout: true)
-                    echo "${ret}"
+                    
                     def full_string = "/var/x /var/y /var/z"
                     def arr = full_string.split(" ")
                     for (i in arr) {
