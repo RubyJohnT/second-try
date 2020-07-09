@@ -10,13 +10,10 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    
-                    sh 'git --no-pager diff origin/$CHANGE_TARGET --name-only'
-                    
-                    def full_string = "/var/x /var/y /var/z"
-                    def arr = full_string.split(" ")
+                    def files_list = sh(script: 'git --no-pager diff origin/$CHANGE_TARGET --name-only | grep ".go$"', returnStdout: true)
+                    def arr = files_list.split("\n")
                     for (i in arr) {
-                      println "now got ${i}"
+                      sh 'golint -set_exit_status ${i}'
                     }
                 }                 
             }
