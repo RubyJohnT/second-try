@@ -11,8 +11,8 @@ pipeline {
             steps {
                 script {
                     sh 'git --no-pager diff origin/$CHANGE_TARGET --name-only'
-                    declare -a gofiles=( $(git --no-pager diff origin/$CHANGE_TARGET --name-only | grep '.go$') )
-                    for (gofile in gofiles) {
+                    def ret = sh(script: 'git --no-pager diff origin/$CHANGE_TARGET --name-only', returnStdout: true)
+                    for (gofile in ret) {
                         sh 'golint ${gofile}'
                     }
                     
