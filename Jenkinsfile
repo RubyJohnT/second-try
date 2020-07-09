@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'golint ./...'
+                sh 'golint -set_exit_status ./...'
             }
         }
     }
