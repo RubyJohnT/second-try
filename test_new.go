@@ -8,8 +8,8 @@ import "fmt"
 
 func main() {
     fmt.Println("hello world")
-	test2meId := "hello"
-fmt.Println(test2meId)
+	test2Id := "hello"
+fmt.Println(test2Id)
 
 }
 
