@@ -12,7 +12,7 @@ pipeline {
                 script {
                     sh 'git --no-pager diff origin/$CHANGE_TARGET --name-only'
                     def ret = sh(script: 'git --no-pager diff origin/$CHANGE_TARGET --name-only', returnStdout: true)
-                    echo "${file}"
+                    echo "${ret}"
                     
                     
                 }                 
